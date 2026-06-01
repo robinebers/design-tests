@@ -1,6 +1,7 @@
 ---
 import { statSync } from "node:fs";
 import { resolve } from "node:path";
+import Analytics from "@vercel/analytics/astro";
 
 const screenshotsDir = resolve(process.cwd(), "public", "screenshots");
 
@@ -49,6 +50,7 @@ const prompt = `create a beautiful, well designed website with astro. this websi
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content="A small index of websites I've generated with different AI coding models, all from the same prompt." />
 		<title>AI Model Design Tests</title>
+		<Analytics />
 	</head>
 	<body>
 		<div class="grain" aria-hidden="true"></div>

@@ -497,19 +497,15 @@ const prompt = `create a beautiful, well designed website with astro. this websi
 			.footer-heart {
 				color: var(--accent);
 				display: inline-block;
-				transform: translateY(1px);
 				margin: 0 2px;
-				transition: transform 0.25s ease;
-			}
-
-			.footer-heart:hover {
-				transform: translateY(1px) scale(1.25);
-				animation: footer-heart-pulse 0.9s ease-in-out infinite;
+				animation: footer-heart-pulse 5s ease-in-out infinite;
+				transform-origin: center;
 			}
 
 			@keyframes footer-heart-pulse {
-				0%, 100% { transform: translateY(1px) scale(1.25); }
-				50%      { transform: translateY(1px) scale(1.4); }
+				0%, 100% { transform: translateY(1px) scale(1); }
+				4%       { transform: translateY(1px) scale(1.35); }
+				10%      { transform: translateY(1px) scale(1); }
 			}
 
 			.footer-link {

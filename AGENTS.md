@@ -120,7 +120,7 @@ End-to-end checklist for adding a new AI model test:
    ```
    The final deployed URL **must** be `https://<slug>-design-test.vercel.app`.
 6. **Register the model in the gallery** in **both** of these arrays (keep them in the same order):
-   - `rawModels` in `src/pages/index.astro:17-26` — add `{ name, slug, url }`. `name` is the display name, e.g. `"MiniMax M3"`, `"Claude Opus 4.8"`.
+   - `rawModels` in `src/pages/index.astro:17-26` — add `{ name, slug, url, date }`. `name` is the display name, e.g. `"MiniMax M3"`, `"Claude Opus 4.8"`. `date` is the generation date in `YYYY-MM-DD` format, e.g. `"2026-06-02"`.
    - `SITES` in `scripts/screenshots.mjs:9-18` — add `{ slug, url }`.
 7. **Capture a screenshot locally.** Start the model's local preview server and screenshot from that — do **not** screenshot the Vercel URL, as it may serve a Vercel deployment page instead of the actual site. From inside `models/<slug>/`:
    ```bash
@@ -131,7 +131,7 @@ End-to-end checklist for adding a new AI model test:
 9. **Update the README.** Add the new model to the "Model Repositories" table in `README.md` with links to both the GitHub repo and the live Vercel site.
 10. **Commit and deploy** the gallery site to Vercel as usual.
 
-The "New" badge on the card is driven by the screenshot's mtime (within 7 days), so a fresh capture on a brand-new model will display the badge automatically.
+The "New" badge on the card is driven by the explicit `date` field in `rawModels` (within 7 days of today), so a fresh model with today's date will display the badge automatically. Cards are sorted by date (newest first), then alphabetically by model name for ties.
 
 ---
 
@@ -197,9 +197,9 @@ npx playwright install chromium
 
 ## Gotchas
 
-- **`statSync` at build time.** `src/pages/index.astro:30` does `statSync(resolve(screenshotsDir, \`${m.slug}.jpg\`))` for every model. If you add a slug to `rawModels` without a matching `public/screenshots/<slug>.jpg`, `npm run build` throws. Always run the screenshot script (or hand-drop a placeholder) before building.
+- **Screenshot file must exist at build time.** `src/pages/index.astro` checks that `public/screenshots/<slug>.jpg` exists for every model in `rawModels`. If you add a slug without a matching screenshot, `npm run build` throws. Always run the screenshot script (or hand-drop a placeholder) before building.
 - **Five-place slug match.** `rawModels.slug`, `SITES.slug`, screenshot filename, Vercel subdomain, and GitHub repo name must all be identical. A mismatch causes either a broken card or a build error.
-- **The "New" badge is mtime-based.** The 7-day window is computed from `mtime` of `public/screenshots/<slug>.jpg` at build time. Re-running the screenshot script resets the timer for that model.
+- **The "New" badge is date-based.** The 7-day window is computed from the explicit `date` field in `rawModels` (within 7 days of today at build time). This is reliable across local and Vercel builds, unlike file mtime which git doesn't preserve.
 - **`models/*` is gitignored.** Per-model Astro projects live in `models/<slug>/` but the directory is excluded from git (root `.gitignore:27-28`, with a top-level `models/.gitignore` of `*\n!.gitignore`). Don't fight this — the per-model sources don't need to be in this repo.
 - **Vercel production vs preview.** `npx vercel --prod --yes` deploys to production, but the initial URL is a random subdomain. You must run `npx vercel alias set <slug>.vercel.app <slug>-design-test.vercel.app` to get the canonical URL. Without the alias, the `url` in `rawModels` will 404 or show the wrong site.
 - **Local screenshots, not Vercel.** Always screenshot from the local preview server (`npm run preview`), not the Vercel URL. Vercel can serve a deployment interstitial or a cached preview page instead of the actual production site, especially immediately after deploying.

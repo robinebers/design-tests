@@ -83,6 +83,7 @@ models/kimi-k2.6/
 models/glm-5.1/
 models/gpt-5.5/
 models/deepseek-v4-pro/
+models/qwen-3-7-max/
 ```
 
 Each `models/<slug>/` is a normal Astro project: `package.json`, `astro.config.mjs`, `tsconfig.json`, `src/`, `public/`, `dist/`, `node_modules/`. The gallery itself does not read or build any of these — they exist only as the model's own working tree.
@@ -90,11 +91,12 @@ Each `models/<slug>/` is a normal Astro project: `package.json`, `astro.config.m
 ### Slug convention
 
 - Lowercase, hyphen-separated (e.g. `minimax-m3`, `kimi-k2-6`, `grok-build-0-1`).
-- Must match in **all four** places, exactly:
+- Must match in **all five** places, exactly:
   1. The directory name: `models/<slug>/`
   2. The entry in `rawModels` in `src/pages/index.astro`
   3. The entry in `SITES` in `scripts/screenshots.mjs`
   4. The screenshot filename: `public/screenshots/<slug>.jpg`
+  5. The GitHub repository name: `robinebers/<slug>-design-test`
 - Maps to the Vercel deploy host `https://<slug>-design-test.vercel.app`. Confirm with Vercel that the slug you pick is free before adding it.
 
 ---
@@ -106,19 +108,36 @@ End-to-end checklist for adding a new AI model test:
 1. **Pick a slug.** Lowercase, hyphens, no leading dot, and a `<slug>-design-test` subdomain available on Vercel.
 2. **Create the per-model project.** `mkdir models/<slug>/` and scaffold a minimal Astro project there. This is the working tree the model will be run in.
 3. **Run the prompt.** With the model, run the [verbatim prompt](#the-prompt) (with the `ui` skill loaded, as is convention). The model is free to choose any brand, copy, framework, and tooling it wants, as long as the output is a deployable website for the brief.
-4. **Deploy to Vercel.** The deployed URL **must** be `https://<slug>-design-test.vercel.app`.
-5. **Register the model in the gallery** in **both** of these arrays (keep them in the same order):
+4. **Create a GitHub repo for the model.** Each model gets its own public repo at `robinebers/<slug>-design-test`. From inside `models/<slug>/`:
+   ```bash
+   git init && git branch -m main
+   git add . && git commit -m "Create <Brand Name> Astro site"
+   gh repo create <slug>-design-test --public --source=. --remote=origin --push
+   ```
+5. **Deploy to Vercel as production.** Run `npx vercel --prod --yes` from inside `models/<slug>/`. The initial deployment will land on a random subdomain (e.g. `qwen-3-7-pebwibsvn-sunstory.vercel.app`). You **must** then set the alias to the canonical URL:
+   ```bash
+   npx vercel alias set <slug>.vercel.app <slug>-design-test.vercel.app
+   ```
+   The final deployed URL **must** be `https://<slug>-design-test.vercel.app`.
+6. **Register the model in the gallery** in **both** of these arrays (keep them in the same order):
    - `rawModels` in `src/pages/index.astro:17-26` — add `{ name, slug, url }`. `name` is the display name, e.g. `"MiniMax M3"`, `"Claude Opus 4.8"`.
    - `SITES` in `scripts/screenshots.mjs:9-18` — add `{ slug, url }`.
-6. **Capture a screenshot.** Run `node scripts/screenshots.mjs` from the repo root. This writes `public/screenshots/<slug>.jpg`. See [How to take screenshots](#how-to-take-screenshots).
-7. **Verify the build.** Run `npm run build` to confirm the new card renders. (This also fails loudly if step 5 or 6 was skipped — see [Gotchas](#gotchas).)
-8. **Commit and deploy** the gallery site to Vercel as usual.
+7. **Capture a screenshot locally.** Start the model's local preview server and screenshot from that — do **not** screenshot the Vercel URL, as it may serve a Vercel deployment page instead of the actual site. From inside `models/<slug>/`:
+   ```bash
+   npm run preview -- --port 4399 &
+   ```
+   Then from the gallery root, capture the screenshot with Playwright pointing at `http://localhost:4399`. See [How to take screenshots](#how-to-take-screenshots) for the full Playwright parameters.
+8. **Verify the build.** Run `npm run build` from the gallery root to confirm the new card renders. (This also fails loudly if step 6 or 7 was skipped — see [Gotchas](#gotchas).)
+9. **Update the README.** Add the new model to the "Model Repositories" table in `README.md` with links to both the GitHub repo and the live Vercel site.
+10. **Commit and deploy** the gallery site to Vercel as usual.
 
 The "New" badge on the card is driven by the screenshot's mtime (within 7 days), so a fresh capture on a brand-new model will display the badge automatically.
 
 ---
 
 ## How to take screenshots
+
+**Always screenshot from the local preview server, not the Vercel URL.** Vercel deployments can serve a deployment/preview page instead of the actual site, especially on fresh or non-production deploys. Run `npm run preview` inside `models/<slug>/` and point Playwright at `http://localhost:<port>` instead.
 
 Screenshots are produced by `scripts/screenshots.mjs`, a single-file Playwright script. It iterates over the `SITES` array and writes one JPEG per slug into `public/screenshots/`.
 
@@ -149,6 +168,8 @@ node scripts/screenshots.mjs
 
 This will overwrite every existing `public/screenshots/<slug>.jpg` for every site in the array. To avoid clobbering other models' screenshots when you're only refreshing one, comment out the other entries in `SITES` temporarily, or guard them with a one-off filter.
 
+**For new models, screenshot locally first.** Before the Vercel deployment is fully propagated, start the model's preview server (`npm run preview -- --port 4399` inside `models/<slug>/`) and capture directly from `http://localhost:4399` using the same Playwright parameters as the script (1440x900, Retina 2x, light mode, JPEG 88). This ensures you capture the actual site, not a Vercel interstitial page.
+
 ### Tweakable knobs
 
 All at the top of `scripts/screenshots.mjs`:
@@ -177,9 +198,12 @@ npx playwright install chromium
 ## Gotchas
 
 - **`statSync` at build time.** `src/pages/index.astro:30` does `statSync(resolve(screenshotsDir, \`${m.slug}.jpg\`))` for every model. If you add a slug to `rawModels` without a matching `public/screenshots/<slug>.jpg`, `npm run build` throws. Always run the screenshot script (or hand-drop a placeholder) before building.
-- **Four-place slug match.** `rawModels.slug`, `SITES.slug`, screenshot filename, and Vercel subdomain must all be identical. A mismatch causes either a broken card or a build error.
+- **Five-place slug match.** `rawModels.slug`, `SITES.slug`, screenshot filename, Vercel subdomain, and GitHub repo name must all be identical. A mismatch causes either a broken card or a build error.
 - **The "New" badge is mtime-based.** The 7-day window is computed from `mtime` of `public/screenshots/<slug>.jpg` at build time. Re-running the screenshot script resets the timer for that model.
 - **`models/*` is gitignored.** Per-model Astro projects live in `models/<slug>/` but the directory is excluded from git (root `.gitignore:27-28`, with a top-level `models/.gitignore` of `*\n!.gitignore`). Don't fight this — the per-model sources don't need to be in this repo.
+- **Vercel production vs preview.** `npx vercel --prod --yes` deploys to production, but the initial URL is a random subdomain. You must run `npx vercel alias set <slug>.vercel.app <slug>-design-test.vercel.app` to get the canonical URL. Without the alias, the `url` in `rawModels` will 404 or show the wrong site.
+- **Local screenshots, not Vercel.** Always screenshot from the local preview server (`npm run preview`), not the Vercel URL. Vercel can serve a deployment interstitial or a cached preview page instead of the actual production site, especially immediately after deploying.
+- **README must be updated.** When adding a new model, you must add it to the "Model Repositories" table in `README.md` with links to both the GitHub repo and the live Vercel site. This table is the public index of all model tests.
 - **Image dimensions.** The card mockup in `index.astro` sets `width="1440" height="900"` and an `aspect-ratio: 1440 / 900` frame. Don't change the screenshot viewport without updating the card CSS or the image will letterbox.
 - **Light mode only.** The screenshot script forces `colorScheme: "light"`. If a model ships a dark-only site, the screenshot will still capture whatever the page renders under light media query. The gallery UI itself is always dark.
 - **No comments in code.** Per the user's standing instruction, code added by an agent should not include comments unless explicitly asked.
@@ -187,7 +211,7 @@ npx playwright install chromium
 ## Conventions
 
 - **Slug style:** lowercase, hyphens, e.g. `kimi-k2-6`, `grok-build-0-1`. Match the model's marketing name normalized.
-- **Order in arrays:** the order in `rawModels` (in `index.astro`) and `SITES` (in `screenshots.mjs`) is the order cards render in. Keep them in sync and put new entries at the end.
+- **Order in arrays:** the order in `rawModels` (in `index.astro`) and `SITES` (in `screenshots.mjs`) should be kept in sync. Cards render sorted by date (newest first), then alphabetically by model name for ties — array order does not affect display order.
 - **Display name (`name`):** the human-readable name shown on the card, e.g. `"MiniMax M3"`, `"Claude Opus 4.8"`, `"DeepSeek V4 Pro"`.
 - **No new top-level docs** beyond `README.md` (default Astro template) and this `AGENTS.md`. Per-model READMEs go inside `models/<slug>/` if a model writes one.
 - **No emojis in code** (per the user's standing instruction). The single emoji on the live page (`❤️` in the footer) is hand-written content, not agent output.

@@ -23,6 +23,7 @@ const rawModels = [
 	{ name: "GLM 5.1", slug: "glm-5-1", url: "https://glm-5-1-design-test.vercel.app" },
 	{ name: "GPT 5.5", slug: "gpt-5-5", url: "https://gpt-5-5-design-test.vercel.app" },
 	{ name: "DeepSeek V4 Pro", slug: "deepseek-v4-pro", url: "https://deepseek-v4-pro-design-test.vercel.app" },
+	{ name: "Qwen 3.7 Max", slug: "qwen-3-7-max", url: "https://qwen-3-7-max-design-test.vercel.app" },
 ];
 
 const models = rawModels.map((m) => {
@@ -34,6 +35,10 @@ const models = rawModels.map((m) => {
 		iso: mtime.toISOString(),
 		isNew: now - mtime.getTime() < NEW_WINDOW_MS,
 	};
+}).sort((a, b) => {
+	const dateDiff = b.iso.localeCompare(a.iso);
+	if (dateDiff !== 0) return dateDiff;
+	return a.name.localeCompare(b.name);
 });
 
 const prompt = `create a beautiful, well designed website with astro. this website is for a travel agency in dubai, offering luxury travel (high-end, $100k+ minimum per trip) in the middle east. come up with a brand that suits this type of company. Make up fitting copy for this high-end client along the way.`;

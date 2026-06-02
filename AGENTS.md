@@ -128,7 +128,7 @@ End-to-end checklist for adding a new AI model test:
    ```
    Then from the gallery root, capture the screenshot with Playwright pointing at `http://localhost:4399`. See [How to take screenshots](#how-to-take-screenshots) for the full Playwright parameters.
 8. **Verify the build.** Run `npm run build` from the gallery root to confirm the new card renders. (This also fails loudly if step 6 or 7 was skipped — see [Gotchas](#gotchas).)
-9. **Update the README.** Add the new model to the "Model Repositories" table in `README.md` with links to both the GitHub repo and the live Vercel site.
+9. **Update the README.** Add the new model to the "Model Repositories" table in `README.md` with links to both the GitHub repo and the live Vercel site. Keep the table sorted by date (newest first), then alphabetically by model name for ties.
 10. **Commit and deploy** the gallery site to Vercel as usual.
 
 The "New" badge on the card is driven by the explicit `date` field in `rawModels` (within 7 days of today), so a fresh model with today's date will display the badge automatically. Cards are sorted by date (newest first), then alphabetically by model name for ties.

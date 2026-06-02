@@ -16,17 +16,17 @@ create a beautiful, well designed website with astro. this website is for a trav
 
 Each model's generated site lives in its own repository:
 
-| Model | Repository | Live Site |
-| :---- | :--------- | :-------- |
-| MiniMax M3 | [minimax-m3-design-test](https://github.com/robinebers/minimax-m3-design-test) | [minimax-m3-design-test.vercel.app](https://minimax-m3-design-test.vercel.app) |
-| Kimi K2.6 | [kimi-k2.6-design-test](https://github.com/robinebers/kimi-k2.6-design-test) | [kimi-k2-6-design-test.vercel.app](https://kimi-k2-6-design-test.vercel.app) |
-| Claude Opus 4.8 | [opus-4.8-design-test](https://github.com/robinebers/opus-4.8-design-test) | [opus-4-8-design-test.vercel.app](https://opus-4-8-design-test.vercel.app) |
-| Grok Build 0.1 | [grok-build-0-1-design-test](https://github.com/robinebers/grok-build-0-1-design-test) | [grok-build-0-1-design-test.vercel.app](https://grok-build-0-1-design-test.vercel.app) |
-| Composer 2.5 | [composer-2.5-design-test](https://github.com/robinebers/composer-2.5-design-test) | [composer-2-5-design-test.vercel.app](https://composer-2-5-design-test.vercel.app) |
-| GLM 5.1 | [glm-5.1-design-test](https://github.com/robinebers/glm-5.1-design-test) | [glm-5-1-design-test.vercel.app](https://glm-5-1-design-test.vercel.app) |
-| GPT 5.5 | [gpt-5.5-design-test](https://github.com/robinebers/gpt-5.5-design-test) | [gpt-5-5-design-test.vercel.app](https://gpt-5-5-design-test.vercel.app) |
-| DeepSeek V4 Pro | [deepseek-v4-pro-design-test](https://github.com/robinebers/deepseek-v4-pro-design-test) | [deepseek-v4-pro-design-test.vercel.app](https://deepseek-v4-pro-design-test.vercel.app) |
-| Qwen 3.7 Max | [qwen-3-7-max-design-test](https://github.com/robinebers/qwen-3-7-max-design-test) | [qwen-3-7-max-design-test.vercel.app](https://qwen-3-7-max-design-test.vercel.app) |
+| Model | Generated | Repository | Live Site |
+| :---- | :-------- | :--------- | :-------- |
+| MiniMax M3 | Jun 1, 2026 | [minimax-m3-design-test](https://github.com/robinebers/minimax-m3-design-test) | [minimax-m3-design-test.vercel.app](https://minimax-m3-design-test.vercel.app) |
+| Kimi K2.6 | Jun 1, 2026 | [kimi-k2.6-design-test](https://github.com/robinebers/kimi-k2.6-design-test) | [kimi-k2-6-design-test.vercel.app](https://kimi-k2-6-design-test.vercel.app) |
+| Claude Opus 4.8 | Jun 1, 2026 | [opus-4.8-design-test](https://github.com/robinebers/opus-4.8-design-test) | [opus-4-8-design-test.vercel.app](https://opus-4-8-design-test.vercel.app) |
+| Grok Build 0.1 | Jun 1, 2026 | [grok-build-0-1-design-test](https://github.com/robinebers/grok-build-0-1-design-test) | [grok-build-0-1-design-test.vercel.app](https://grok-build-0-1-design-test.vercel.app) |
+| Composer 2.5 | Jun 1, 2026 | [composer-2.5-design-test](https://github.com/robinebers/composer-2.5-design-test) | [composer-2-5-design-test.vercel.app](https://composer-2-5-design-test.vercel.app) |
+| GLM 5.1 | Jun 1, 2026 | [glm-5.1-design-test](https://github.com/robinebers/glm-5.1-design-test) | [glm-5-1-design-test.vercel.app](https://glm-5-1-design-test.vercel.app) |
+| GPT 5.5 | Jun 1, 2026 | [gpt-5.5-design-test](https://github.com/robinebers/gpt-5.5-design-test) | [gpt-5-5-design-test.vercel.app](https://gpt-5-5-design-test.vercel.app) |
+| DeepSeek V4 Pro | Jun 1, 2026 | [deepseek-v4-pro-design-test](https://github.com/robinebers/deepseek-v4-pro-design-test) | [deepseek-v4-pro-design-test.vercel.app](https://deepseek-v4-pro-design-test.vercel.app) |
+| Qwen 3.7 Max | Jun 2, 2026 | [qwen-3-7-max-design-test](https://github.com/robinebers/qwen-3-7-max-design-test) | [qwen-3-7-max-design-test.vercel.app](https://qwen-3-7-max-design-test.vercel.app) |
 
 ## Local Development
 

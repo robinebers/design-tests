@@ -1,5 +1,5 @@
 ---
-import { statSync } from "node:fs";
+import { existsSync } from "node:fs";
 import { resolve } from "node:path";
 import Analytics from "@vercel/analytics/astro";
 
@@ -15,25 +15,28 @@ const NEW_WINDOW_MS = 7 * 24 * 60 * 60 * 1000;
 const now = Date.now();
 
 const rawModels = [
-	{ name: "MiniMax M3", slug: "minimax-m3", url: "https://minimax-m3-design-test.vercel.app" },
-	{ name: "Kimi K2.6", slug: "kimi-k2-6", url: "https://kimi-k2-6-design-test.vercel.app" },
-	{ name: "Claude Opus 4.8", slug: "opus-4-8", url: "https://opus-4-8-design-test.vercel.app" },
-	{ name: "Grok Build 0.1", slug: "grok-build-0-1", url: "https://grok-build-0-1-design-test.vercel.app" },
-	{ name: "Composer 2.5", slug: "composer-2-5", url: "https://composer-2-5-design-test.vercel.app" },
-	{ name: "GLM 5.1", slug: "glm-5-1", url: "https://glm-5-1-design-test.vercel.app" },
-	{ name: "GPT 5.5", slug: "gpt-5-5", url: "https://gpt-5-5-design-test.vercel.app" },
-	{ name: "DeepSeek V4 Pro", slug: "deepseek-v4-pro", url: "https://deepseek-v4-pro-design-test.vercel.app" },
-	{ name: "Qwen 3.7 Max", slug: "qwen-3-7-max", url: "https://qwen-3-7-max-design-test.vercel.app" },
+	{ name: "MiniMax M3", slug: "minimax-m3", url: "https://minimax-m3-design-test.vercel.app", date: "2026-06-01" },
+	{ name: "Kimi K2.6", slug: "kimi-k2-6", url: "https://kimi-k2-6-design-test.vercel.app", date: "2026-06-01" },
+	{ name: "Claude Opus 4.8", slug: "opus-4-8", url: "https://opus-4-8-design-test.vercel.app", date: "2026-06-01" },
+	{ name: "Grok Build 0.1", slug: "grok-build-0-1", url: "https://grok-build-0-1-design-test.vercel.app", date: "2026-06-01" },
+	{ name: "Composer 2.5", slug: "composer-2-5", url: "https://composer-2-5-design-test.vercel.app", date: "2026-06-01" },
+	{ name: "GLM 5.1", slug: "glm-5-1", url: "https://glm-5-1-design-test.vercel.app", date: "2026-06-01" },
+	{ name: "GPT 5.5", slug: "gpt-5-5", url: "https://gpt-5-5-design-test.vercel.app", date: "2026-06-01" },
+	{ name: "DeepSeek V4 Pro", slug: "deepseek-v4-pro", url: "https://deepseek-v4-pro-design-test.vercel.app", date: "2026-06-01" },
+	{ name: "Qwen 3.7 Max", slug: "qwen-3-7-max", url: "https://qwen-3-7-max-design-test.vercel.app", date: "2026-06-02" },
 ];
 
 const models = rawModels.map((m) => {
 	const file = resolve(screenshotsDir, `${m.slug}.jpg`);
-	const mtime = statSync(file).mtime;
+	if (!existsSync(file)) {
+		throw new Error(`Missing screenshot: ${file}`);
+	}
+	const dateObj = new Date(m.date + "T12:00:00Z");
 	return {
 		...m,
-		date: dateFmt.format(mtime),
-		iso: mtime.toISOString(),
-		isNew: now - mtime.getTime() < NEW_WINDOW_MS,
+		date: dateFmt.format(dateObj),
+		iso: dateObj.toISOString(),
+		isNew: now - dateObj.getTime() < NEW_WINDOW_MS,
 	};
 }).sort((a, b) => {
 	const dateDiff = b.iso.localeCompare(a.iso);

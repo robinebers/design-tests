@@ -16,6 +16,7 @@ const SITES = [
 	{ slug: "gpt-5-5", url: "https://gpt-5-5-design-test.vercel.app" },
 	{ slug: "deepseek-v4-pro", url: "https://deepseek-v4-pro-design-test.vercel.app" },
 	{ slug: "qwen-3-7-max", url: "https://qwen-3-7-max-design-test.vercel.app" },
+	{ slug: "claude-fable-5", url: "https://claude-fable-5-design-test.vercel.app" },
 ];
 
 const VIEWPORT = { width: 1440, height: 900 };

@@ -18,6 +18,7 @@ Each model's generated site lives in its own repository:
 
 | Model | Generated | Repository | Live Site |
 | :---- | :-------- | :--------- | :-------- |
+| Claude Fable 5 | Jun 9, 2026 | [claude-fable-5-design-test](https://github.com/robinebers/claude-fable-5-design-test) | [claude-fable-5-design-test.vercel.app](https://claude-fable-5-design-test.vercel.app) |
 | Qwen 3.7 Max | Jun 2, 2026 | [qwen-3-7-max-design-test](https://github.com/robinebers/qwen-3-7-max-design-test) | [qwen-3-7-max-design-test.vercel.app](https://qwen-3-7-max-design-test.vercel.app) |
 | Claude Opus 4.8 | Jun 1, 2026 | [opus-4.8-design-test](https://github.com/robinebers/opus-4.8-design-test) | [opus-4-8-design-test.vercel.app](https://opus-4-8-design-test.vercel.app) |
 | Composer 2.5 | Jun 1, 2026 | [composer-2.5-design-test](https://github.com/robinebers/composer-2.5-design-test) | [composer-2-5-design-test.vercel.app](https://composer-2-5-design-test.vercel.app) |

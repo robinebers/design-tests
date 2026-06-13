@@ -26,3 +26,4 @@ pnpm-debug.log*
 # local model Astro projects
 /models/*
 !/models/.gitignore
+.vercel

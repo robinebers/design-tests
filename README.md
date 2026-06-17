@@ -18,6 +18,7 @@ Each model's generated site lives in its own repository:
 
 | Model | Generated | Repository | Live Site |
 | :---- | :-------- | :--------- | :-------- |
+| GLM 5.2 | Jun 17, 2026 | [glm-5.2-design-test](https://github.com/robinebers/glm-5.2-design-test) | [glm-5-2-design-test.vercel.app](https://glm-5-2-design-test.vercel.app) |
 | Kimi K2.7 | Jun 13, 2026 | [kimi-k2.7-design-test](https://github.com/robinebers/kimi-k2.7-design-test) | [kimi-k2-7-design-test.vercel.app](https://kimi-k2-7-design-test.vercel.app) |
 | Claude Fable 5 | Jun 9, 2026 | [claude-fable-5-design-test](https://github.com/robinebers/claude-fable-5-design-test) | [claude-fable-5-design-test.vercel.app](https://claude-fable-5-design-test.vercel.app) |
 | Qwen 3.7 Max | Jun 2, 2026 | [qwen-3-7-max-design-test](https://github.com/robinebers/qwen-3-7-max-design-test) | [qwen-3-7-max-design-test.vercel.app](https://qwen-3-7-max-design-test.vercel.app) |

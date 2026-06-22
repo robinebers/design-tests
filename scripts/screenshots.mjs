@@ -22,6 +22,7 @@ const SITES = [
 	{ slug: "fugu-ultra", url: "https://fugu-ultra-design-test.vercel.app" },
 	{ slug: "gemini-3-1-pro", url: "https://gemini-3-1-pro-design-test.vercel.app" },
 	{ slug: "gemini-3-5-flash", url: "https://gemini-3-5-flash-design-test.vercel.app" },
+	{ slug: "mimo-v2-5-pro", url: "https://mimo-v2-5-pro-design-test.vercel.app" },
 ];
 
 const VIEWPORT = { width: 1440, height: 900 };

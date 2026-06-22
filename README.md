@@ -18,6 +18,7 @@ Each model's generated site lives in its own repository:
 
 | Model | Generated | Repository | Live Site |
 | :---- | :-------- | :--------- | :-------- |
+| MiMo V2.5 Pro | Jun 22, 2026 | [mimo-v2-5-pro-design-test](https://github.com/robinebers/mimo-v2-5-pro-design-test) | [mimo-v2-5-pro-design-test.vercel.app](https://mimo-v2-5-pro-design-test.vercel.app) |
 | Fugu Ultra | Jun 22, 2026 | [fugu-ultra-design-test](https://github.com/robinebers/fugu-ultra-design-test) | [fugu-ultra-design-test.vercel.app](https://fugu-ultra-design-test.vercel.app) |
 | Gemini 3.1 Pro | Jun 22, 2026 | [gemini-3-1-pro-design-test](https://github.com/robinebers/gemini-3-1-pro-design-test) | [gemini-3-1-pro-design-test.vercel.app](https://gemini-3-1-pro-design-test.vercel.app) |
 | Gemini 3.5 Flash | Jun 22, 2026 | [gemini-3-5-flash-design-test](https://github.com/robinebers/gemini-3-5-flash-design-test) | [gemini-3-5-flash-design-test.vercel.app](https://gemini-3-5-flash-design-test.vercel.app) |

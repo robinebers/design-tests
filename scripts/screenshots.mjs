@@ -19,6 +19,7 @@ const SITES = [
 	{ slug: "claude-fable-5", url: "https://claude-fable-5-design-test.vercel.app" },
 	{ slug: "kimi-k2-7", url: "https://kimi-k2-7-design-test.vercel.app" },
 	{ slug: "glm-5-2", url: "https://glm-5-2-design-test.vercel.app" },
+	{ slug: "fugu-ultra", url: "https://fugu-ultra-design-test.vercel.app" },
 ];
 
 const VIEWPORT = { width: 1440, height: 900 };

@@ -20,6 +20,7 @@ Each model's generated site lives in its own repository:
 | :---- | :-------- | :--------- | :-------- |
 | Fugu Ultra | Jun 22, 2026 | [fugu-ultra-design-test](https://github.com/robinebers/fugu-ultra-design-test) | [fugu-ultra-design-test.vercel.app](https://fugu-ultra-design-test.vercel.app) |
 | Gemini 3.1 Pro | Jun 22, 2026 | [gemini-3-1-pro-design-test](https://github.com/robinebers/gemini-3-1-pro-design-test) | [gemini-3-1-pro-design-test.vercel.app](https://gemini-3-1-pro-design-test.vercel.app) |
+| Gemini 3.5 Flash | Jun 22, 2026 | [gemini-3-5-flash-design-test](https://github.com/robinebers/gemini-3-5-flash-design-test) | [gemini-3-5-flash-design-test.vercel.app](https://gemini-3-5-flash-design-test.vercel.app) |
 | GLM 5.2 | Jun 17, 2026 | [glm-5.2-design-test](https://github.com/robinebers/glm-5.2-design-test) | [glm-5-2-design-test.vercel.app](https://glm-5-2-design-test.vercel.app) |
 | Kimi K2.7 | Jun 13, 2026 | [kimi-k2.7-design-test](https://github.com/robinebers/kimi-k2.7-design-test) | [kimi-k2-7-design-test.vercel.app](https://kimi-k2-7-design-test.vercel.app) |
 | Claude Fable 5 | Jun 9, 2026 | [claude-fable-5-design-test](https://github.com/robinebers/claude-fable-5-design-test) | [claude-fable-5-design-test.vercel.app](https://claude-fable-5-design-test.vercel.app) |

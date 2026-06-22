@@ -114,11 +114,25 @@ End-to-end checklist for adding a new AI model test:
    git add . && git commit -m "Create <Brand Name> Astro site"
    gh repo create <slug>-design-test --public --source=. --remote=origin --push
    ```
-5. **Deploy to Vercel as production.** Run `npx vercel --prod --yes` from inside `models/<slug>/`. The initial deployment will land on a random subdomain (e.g. `qwen-3-7-pebwibsvn-sunstory.vercel.app`). You **must** then set the alias to the canonical URL:
+5. **Deploy to Vercel as production.** Deploys must be linked and processed through Vercel's Git integration to prevent Standard Deployment Protection from locking down the site. Connect the GitHub repository to the Vercel project when linking (using `npx vercel --prod --yes` which connects the remote Git source). The initial deployment will land on a random subdomain (e.g. `qwen-3-7-pebwibsvn-sunstory.vercel.app`). You **must** then set the alias to the canonical URL:
    ```bash
    npx vercel alias set <slug>.vercel.app <slug>-design-test.vercel.app
    ```
    The final deployed URL **must** be `https://<slug>-design-test.vercel.app`.
+   
+   **CRITICAL: Verify public accessibility of the deployment.** You must verify that the canonical URL is accessible by any external visitor without requiring Vercel Authentication. Test the URL using an unauthenticated `curl` request:
+   ```bash
+   curl -sIL https://<slug>-design-test.vercel.app | grep -i "^HTTP"
+   ```
+   If the site returns any redirect (`302/307`) pointing to a login or accounts page, or anything other than a clean `200 OK`, you must immediately disable SSO protection via the Vercel API:
+   ```bash
+   # 1. Write sso.json
+   echo '{"ssoProtection": null}' > sso.json
+   # 2. Disable SSO via Vercel CLI API client
+   npx vercel api /v9/projects/<slug> -X PATCH --input sso.json --scope sunstory
+   # 3. Clean up
+   rm sso.json
+   ```
 6. **Register the model in the gallery** in **both** of these arrays (keep them in the same order):
    - `rawModels` in `src/pages/index.astro:17-26` — add `{ name, slug, url, date }`. `name` is the display name, e.g. `"MiniMax M3"`, `"Claude Opus 4.8"`. `date` is the generation date in `YYYY-MM-DD` format, e.g. `"2026-06-02"`.
    - `SITES` in `scripts/screenshots.mjs:9-18` — add `{ slug, url }`.
@@ -201,7 +215,7 @@ npx playwright install chromium
 - **Five-place slug match.** `rawModels.slug`, `SITES.slug`, screenshot filename, Vercel subdomain, and GitHub repo name must all be identical. A mismatch causes either a broken card or a build error.
 - **The "New" badge is date-based.** The 7-day window is computed from the explicit `date` field in `rawModels` (within 7 days of today at build time). This is reliable across local and Vercel builds, unlike file mtime which git doesn't preserve.
 - **`models/*` is gitignored.** Per-model Astro projects live in `models/<slug>/` but the directory is excluded from git (root `.gitignore:27-28`, with a top-level `models/.gitignore` of `*\n!.gitignore`). Don't fight this — the per-model sources don't need to be in this repo.
-- **Vercel production vs preview.** `npx vercel --prod --yes` deploys to production, but the initial URL is a random subdomain. You must run `npx vercel alias set <slug>.vercel.app <slug>-design-test.vercel.app` to get the canonical URL. Without the alias, the `url` in `rawModels` will 404 or show the wrong site.
+- **Vercel production vs preview.** `npx vercel --prod --yes` deploys to production, but the initial URL is a random subdomain. You must run `npx vercel alias set <slug>.vercel.app <slug>-design-test.vercel.app` to get the canonical URL. Without the alias, the `url` in `rawModels` will 404 or show the wrong site. Always make sure to verify public accessibility of the URL using `curl` without any authentication headers; it must return `HTTP/2 200 OK` (if not, SSO protection must be disabled on Vercel using `npx vercel api /v9/projects/<slug> -X PATCH`).
 - **Local screenshots, not Vercel.** Always screenshot from the local preview server (`npm run preview`), not the Vercel URL. Vercel can serve a deployment interstitial or a cached preview page instead of the actual production site, especially immediately after deploying.
 - **README must be updated.** When adding a new model, you must add it to the "Model Repositories" table in `README.md` with links to both the GitHub repo and the live Vercel site. This table is the public index of all model tests.
 - **Image dimensions.** The card mockup in `index.astro` sets `width="1440" height="900"` and an `aspect-ratio: 1440 / 900` frame. Don't change the screenshot viewport without updating the card CSS or the image will letterbox.

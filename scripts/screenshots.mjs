@@ -24,6 +24,7 @@ const SITES = [
 	{ slug: "gemini-3-5-flash", url: "https://gemini-3-5-flash-design-test.vercel.app" },
 	{ slug: "mimo-v2-5-pro", url: "https://mimo-v2-5-pro-design-test.vercel.app" },
 	{ slug: "ornith-1-0-35b-q8-0", url: "https://ornith-1-0-35b-q8-0-design-test.vercel.app" },
+	{ slug: "glm-5-2-max-cursor", url: "https://glm-5-2-max-cursor-design-test.vercel.app" },
 ];
 
 const VIEWPORT = { width: 1440, height: 900 };

@@ -18,6 +18,7 @@ Each model's generated site lives in its own repository:
 
 | Model | Generated | Repository | Live Site |
 | :---- | :-------- | :--------- | :-------- |
+| GLM 5.2 Max Cursor | Jun 28, 2026 | [glm-5-2-max-cursor-design-test](https://github.com/robinebers/glm-5-2-max-cursor-design-test) | [glm-5-2-max-cursor-design-test.vercel.app](https://glm-5-2-max-cursor-design-test.vercel.app) |
 | Ornith 1.0 35B Q8_0 | Jun 28, 2026 | [ornith-1-0-35b-q8-0-design-test](https://github.com/robinebers/ornith-1-0-35b-q8-0-design-test) | [ornith-1-0-35b-q8-0-design-test.vercel.app](https://ornith-1-0-35b-q8-0-design-test.vercel.app) |
 | MiMo V2.5 Pro | Jun 22, 2026 | [mimo-v2-5-pro-design-test](https://github.com/robinebers/mimo-v2-5-pro-design-test) | [mimo-v2-5-pro-design-test.vercel.app](https://mimo-v2-5-pro-design-test.vercel.app) |
 | Fugu Ultra | Jun 22, 2026 | [fugu-ultra-design-test](https://github.com/robinebers/fugu-ultra-design-test) | [fugu-ultra-design-test.vercel.app](https://fugu-ultra-design-test.vercel.app) |

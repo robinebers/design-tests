@@ -18,6 +18,7 @@ Each model's generated site lives in its own repository:
 
 | Model | Generated | Repository | Live Site |
 | :---- | :-------- | :--------- | :-------- |
+| Ornith 1.0 35B Q8_0 | Jun 28, 2026 | [ornith-1-0-35b-q8-0-design-test](https://github.com/robinebers/ornith-1-0-35b-q8-0-design-test) | [ornith-1-0-35b-q8-0-design-test.vercel.app](https://ornith-1-0-35b-q8-0-design-test.vercel.app) |
 | MiMo V2.5 Pro | Jun 22, 2026 | [mimo-v2-5-pro-design-test](https://github.com/robinebers/mimo-v2-5-pro-design-test) | [mimo-v2-5-pro-design-test.vercel.app](https://mimo-v2-5-pro-design-test.vercel.app) |
 | Fugu Ultra | Jun 22, 2026 | [fugu-ultra-design-test](https://github.com/robinebers/fugu-ultra-design-test) | [fugu-ultra-design-test.vercel.app](https://fugu-ultra-design-test.vercel.app) |
 | Gemini 3.1 Pro | Jun 22, 2026 | [gemini-3-1-pro-design-test](https://github.com/robinebers/gemini-3-1-pro-design-test) | [gemini-3-1-pro-design-test.vercel.app](https://gemini-3-1-pro-design-test.vercel.app) |
@@ -34,6 +35,7 @@ Each model's generated site lives in its own repository:
 | Grok Build 0.1 | Jun 1, 2026 | [grok-build-0-1-design-test](https://github.com/robinebers/grok-build-0-1-design-test) | [grok-build-0-1-design-test.vercel.app](https://grok-build-0-1-design-test.vercel.app) |
 | Kimi K2.6 | Jun 1, 2026 | [kimi-k2.6-design-test](https://github.com/robinebers/kimi-k2.6-design-test) | [kimi-k2-6-design-test.vercel.app](https://kimi-k2-6-design-test.vercel.app) |
 | MiniMax M3 | Jun 1, 2026 | [minimax-m3-design-test](https://github.com/robinebers/minimax-m3-design-test) | [minimax-m3-design-test.vercel.app](https://minimax-m3-design-test.vercel.app) |
+
 
 ## Local Development
 

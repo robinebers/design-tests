@@ -37,7 +37,9 @@ const rawModels = [
 	{ name: "GPT 5.6 Terra High", slug: "gpt-5-6-terra-high", url: "https://gpt-5-6-terra-high-design-test.vercel.app", date: "2026-07-08" },
 ];
 
-const models = rawModels.map((m) => {
+const SHOW_GPT_56 = false;
+
+const models = rawModels.filter((m) => SHOW_GPT_56 || !m.slug.startsWith("gpt-5-6-")).map((m) => {
 	const file = resolve(screenshotsDir, `${m.slug}.jpg`);
 	if (!existsSync(file)) {
 		throw new Error(`Missing screenshot: ${file}`);

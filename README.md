@@ -9,6 +9,8 @@ Every time a new AI coding model comes out, I run it through this design test. T
 ## The Prompt
 
 ```
+Use the /design skill.
+
 create a beautiful, well designed website with astro. this website is for a travel agency in dubai, offering luxury travel (high-end, $100k+ minimum per trip) in the middle east. come up with a brand that suits this type of company. Make up fitting copy for this high-end client along the way.
 ```
 

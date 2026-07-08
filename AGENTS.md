@@ -58,15 +58,17 @@ Run all of these from the repo root.
 
 ## The prompt
 
-The exact prompt that gets run for every model is hard-coded in `src/pages/index.astro:39` and shown verbatim on the gallery page itself:
+The exact prompt that gets run for every model is hard-coded in `src/pages/index.astro:60` and shown verbatim on the gallery page itself:
 
 ```
+Use the /design skill.
+
 create a beautiful, well designed website with astro. this website is for a travel agency in dubai, offering luxury travel (high-end, $100k+ minimum per trip) in the middle east. come up with a brand that suits this type of company. Make up fitting copy for this high-end client along the way.
 ```
 
 **Do not paraphrase, abridge, or "improve" this prompt.** The whole point of the gallery is that the input is identical across models so outputs are comparable.
 
-When running the prompt against a new model, the agent's environment typically also includes the `ui` skill, which shapes how the model designs the site. The lede on the gallery page calls this out: results will vary as the installed skills change over time.
+When running the prompt against a new model, load the `/design` skill, which shapes how the model designs the site. The lede on the gallery page calls this out: results will vary as the installed skills change over time.
 
 ---
 
@@ -107,7 +109,7 @@ End-to-end checklist for adding a new AI model test:
 
 1. **Pick a slug.** Lowercase, hyphens, no leading dot, and a `<slug>-design-test` subdomain available on Vercel.
 2. **Create the per-model project.** `mkdir models/<slug>/` and scaffold a minimal Astro project there. This is the working tree the model will be run in.
-3. **Run the prompt.** With the model, run the [verbatim prompt](#the-prompt) (with the `ui` skill loaded, as is convention). The model is free to choose any brand, copy, framework, and tooling it wants, as long as the output is a deployable website for the brief.
+3. **Run the prompt.** With the model, run the [verbatim prompt](#the-prompt) (with the `/design` skill loaded, as is convention). The model is free to choose any brand, copy, framework, and tooling it wants, as long as the output is a deployable website for the brief.
 4. **Create a GitHub repo for the model.** Each model gets its own public repo at `robinebers/<slug>-design-test`. From inside `models/<slug>/`:
    ```bash
    git init && git branch -m main

@@ -57,7 +57,9 @@ const models = rawModels.filter((m) => SHOW_GPT_56 || !m.slug.startsWith("gpt-5-
 	return a.name.localeCompare(b.name);
 });
 
-const prompt = `create a beautiful, well designed website with astro. this website is for a travel agency in dubai, offering luxury travel (high-end, $100k+ minimum per trip) in the middle east. come up with a brand that suits this type of company. Make up fitting copy for this high-end client along the way.`;
+const prompt = `Use the /design skill.
+
+create a beautiful, well designed website with astro. this website is for a travel agency in dubai, offering luxury travel (high-end, $100k+ minimum per trip) in the middle east. come up with a brand that suits this type of company. Make up fitting copy for this high-end client along the way.`;
 ---
 
 <html lang="en">
@@ -87,7 +89,7 @@ const prompt = `create a beautiful, well designed website with astro. this websi
 				Every time a new AI coding model comes out, I might run it through this little
 				design test. The prompt is the same every time, but the result is also shaped
 				by whichever skills I have installed in my setup at the moment, which typically
-				include the <code>ui.sh</code> skill. So results may vary.
+				include the <code>/design</code> skill. So results may vary.
 			</p>
 		</header>
 

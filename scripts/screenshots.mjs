@@ -26,6 +26,7 @@ const SITES = [
 	{ slug: "ornith-1-0-35b-q8-0", url: "https://ornith-1-0-35b-q8-0-design-test.vercel.app" },
 	{ slug: "glm-5-2-max-cursor", url: "https://glm-5-2-max-cursor-design-test.vercel.app" },
 	{ slug: "gpt-5-6-terra-high", url: "https://gpt-5-6-terra-high-design-test.vercel.app" },
+	{ slug: "gpt-5-6-luna-high", url: "https://gpt-5-6-luna-high-design-test.vercel.app" },
 ];
 
 const VIEWPORT = { width: 1440, height: 900 };

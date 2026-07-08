@@ -18,6 +18,7 @@ Each model's generated site lives in its own repository:
 
 | Model | Generated | Repository | Live Site |
 | :---- | :-------- | :--------- | :-------- |
+| GPT 5.6 Luna High | Jul 8, 2026 | [gpt-5-6-luna-high-design-test](https://github.com/robinebers/gpt-5-6-luna-high-design-test) | [gpt-5-6-luna-high-design-test.vercel.app](https://gpt-5-6-luna-high-design-test.vercel.app) |
 | GPT 5.6 Terra High | Jul 8, 2026 | [gpt-5-6-terra-high-design-test](https://github.com/robinebers/gpt-5-6-terra-high-design-test) | [gpt-5-6-terra-high-design-test.vercel.app](https://gpt-5-6-terra-high-design-test.vercel.app) |
 | GLM 5.2 Max Cursor | Jun 28, 2026 | [glm-5-2-max-cursor-design-test](https://github.com/robinebers/glm-5-2-max-cursor-design-test) | [glm-5-2-max-cursor-design-test.vercel.app](https://glm-5-2-max-cursor-design-test.vercel.app) |
 | Ornith 1.0 35B Q8_0 | Jun 28, 2026 | [ornith-1-0-35b-q8-0-design-test](https://github.com/robinebers/ornith-1-0-35b-q8-0-design-test) | [ornith-1-0-35b-q8-0-design-test.vercel.app](https://ornith-1-0-35b-q8-0-design-test.vercel.app) |

@@ -27,6 +27,7 @@ const SITES = [
 	{ slug: "glm-5-2-max-cursor", url: "https://glm-5-2-max-cursor-design-test.vercel.app" },
 	{ slug: "gpt-5-6-luna-high", url: "https://gpt-5-6-luna-high-design-test.vercel.app" },
 	{ slug: "gpt-5-6-sol-high", url: "https://gpt-5-6-sol-high-design-test.vercel.app" },
+	{ slug: "gpt-5-6-sol-ultra", url: "https://gpt-5-6-sol-ultra-design-test.vercel.app" },
 	{ slug: "gpt-5-6-terra-high", url: "https://gpt-5-6-terra-high-design-test.vercel.app" },
 ];
 
